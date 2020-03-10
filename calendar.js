@@ -1,13 +1,13 @@
 // Only for testing
-var ss = SpreadsheetApp.openById('1DSb09yAP1fWbVT8Yqf1VNqXrqgWIgT7fNJ_5QLYmqDA')
+var ss = SpreadsheetApp.openById('') // Insert Calendar ID for testing - this is the only way this works for now but I'll be adding a user prompt further down the line
 SpreadsheetApp.setActiveSpreadsheet(ss);
 var sheet = ss.getSheets()[1];
-var calId = sheet.getRange(3,11).getValue();
+var calId = sheet.getRange(3,11).getValue(); // get cal ID from Sheet (user inputted)
 var cal = CalendarApp.getCalendarById(calId);
 
-function findEmptyRow() {
-    var range = sheet.getRange("F7:F");
-    var values = range.getValues();
+function findEmptyRow() { // Checks ID column to see if row exists already
+    var range = sheet.getRange("F7:F"); 
+    var values = range.getValues(); 
     var ct = 5;
     while (values[ct] && values[ct][0] != "") {
         ct++;
